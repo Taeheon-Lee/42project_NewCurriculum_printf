@@ -1,6 +1,18 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: tlee <marvin@42.fr>                        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/04/23 00:34:17 by tlee              #+#    #+#              #
+#    Updated: 2020/04/23 00:34:41 by tlee             ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = libftprintf.a
 FLAGS = -Wall -Wextra -Werror
-SOURCE = result_flag.c percent.c result.c set.c get.c ft_printf.c caseToa.c case.c libft/*.c
+SOURCE = *.c
 OBJECT = *.o
 INCLUDE = .
 
