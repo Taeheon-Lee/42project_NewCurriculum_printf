@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 16:36:06 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/23 00:48:58 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/23 20:59:02 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,11 @@ int	percent_start(const char *format, int i, va_list ap)
 	{
 		if ((wh.con = set_con(format[wh.loc])) != 0)
 			break ;
-		else if (Check_flag(format[wh.loc]))
+		else if (check_flag(format[wh.loc]))
 			wh = set_flag(wh, format[wh.loc]);
-		else if (Check_num(format[wh.loc]))
+		else if (check_num(format[wh.loc]))
 			wh = set_wid(wh, format);
-		else if (Check_dot(format[wh.loc]))
+		else if (check_dot(format[wh.loc]))
 			wh = set_pre(wh, format);
 		wh.loc++;
 	}

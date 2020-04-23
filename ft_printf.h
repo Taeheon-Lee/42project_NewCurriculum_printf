@@ -6,15 +6,12 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 16:16:26 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/23 00:33:20 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/23 20:47:43 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# define Check_flag(c) (c == '-' || c == '0')
-# define Check_num(c) (c >= '1' && c <= '9')
-# define Check_dot(c) (c == '.')
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
@@ -59,5 +56,8 @@ t_printf		result(t_printf wh);
 t_printf		result_apply_p(t_printf wh);
 char			result_put_sign(t_printf wh);
 t_printf		result_apply_sign(t_printf wh);
+int				check_flag(char c);
+int				check_num(char c);
+int				check_dot(char c);
 
 #endif
