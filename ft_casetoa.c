@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 23:19:24 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/23 00:46:02 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/24 17:51:44 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ t_printf	xtoa(t_printf wh, unsigned long long x)
 			wh.tmp[i] = (wh.con == 'X' ? 'A' : 'a') + j - 10;
 		else
 			wh.tmp[i] = j + '0';
+		x = x / 16;
 		i--;
 	}
 	return (wh);

@@ -12,7 +12,7 @@
 
 NAME = libftprintf.a
 FLAGS = -Wall -Wextra -Werror
-SOURCE = *.c
+SOURCE = ft_case.c ft_casetoa.c ft_check.c ft_percent.c ft_printf.c ft_result_apply.c ft_result.c ft_set.c
 OBJECT = *.o
 INCLUDE = .
 

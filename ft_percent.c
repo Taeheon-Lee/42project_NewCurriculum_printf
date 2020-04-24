@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 16:36:06 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/23 20:59:02 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/24 22:52:03 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	exit_percent(const char *format, int i)
 	while (1)
 	{
 		c = format[i + cnt];
-		if (set_con(c) == 0)
+		if (set_con(c))
 			break ;
 		cnt++;
 	}
