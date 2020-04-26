@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 19:51:34 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/26 23:54:51 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/27 01:36:23 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_printf	set_star(t_printf wh, char **s, int d)
 
 char		*set_star_front(t_printf wh, char **s)
 {
-	char 	*arr;
+	char	*arr;
 	int		i;
 
 	i = -1;
@@ -86,6 +86,7 @@ char		*set_star_end(t_printf wh, char **s)
 	int		i;
 	int		j;
 
+	cnt = 0;
 	i = wh.loc + 1;
 	while ((*s)[i++])
 		cnt++;
