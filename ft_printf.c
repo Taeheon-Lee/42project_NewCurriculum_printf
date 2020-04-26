@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 16:27:15 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/18 16:30:57 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/26 14:27:58 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
+	char	*arr;
 	int		result;
 
 	va_start(ap, format);
-	result = percent(format, ap);
+	arr = (char *)format;
+	result = percent(&arr, ap);
 	va_end(ap);
 	return (result);
 }

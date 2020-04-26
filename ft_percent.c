@@ -6,13 +6,13 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 16:36:06 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/24 22:52:03 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/26 22:38:01 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	exit_percent(const char *format, int i)
+int	exit_percent(char **format, int i)
 {
 	int		cnt;
 	char	c;
@@ -20,7 +20,7 @@ int	exit_percent(const char *format, int i)
 	cnt = 0;
 	while (1)
 	{
-		c = format[i + cnt];
+		c = (*format)[i + cnt];
 		if (set_con(c))
 			break ;
 		cnt++;
@@ -74,31 +74,20 @@ int	percent_pass(t_printf wh, va_list ap)
 	return (percent_print(wh));
 }
 
-int	percent_start(const char *format, int i, va_list ap)
+int	percent_start(char **format, int i, va_list ap)
 {
 	t_printf wh;
 
 	ft_memset(&wh, 0, sizeof(wh));
 	wh.loc = i;
 	wh.pre = -1;
-	while (format[wh.loc])
-	{
-		if ((wh.con = set_con(format[wh.loc])) != 0)
-			break ;
-		else if (check_flag(format[wh.loc]))
-			wh = set_flag(wh, format[wh.loc]);
-		else if (check_num(format[wh.loc]))
-			wh = set_wid(wh, format);
-		else if (check_dot(format[wh.loc]))
-			wh = set_pre(wh, format);
-		wh.loc++;
-	}
-	if (wh.con == 0)
+	wh = check(format, wh, ap);
+	if (wh.err == 1)
 		return (-1);
 	return (percent_pass(wh, ap));
 }
 
-int	percent(const char *format, va_list ap)
+int	percent(char **format, va_list ap)
 {
 	int i;
 	int result;
@@ -106,22 +95,20 @@ int	percent(const char *format, va_list ap)
 
 	i = 0;
 	result = 0;
-	while (format[i])
+	while ((*format)[i])
 	{
-		if (format[i] == '%')
+		if ((*format)[i] == '%')
 		{
-			tmp = percent_start(format, i + 1, ap);
-			if (tmp == -1)
-				break ;
-			result = result + tmp;
-			i = exit_percent(format, i + 1);
+			if ((tmp = percent_start(format, i + 1, ap)) != -1)
+			{
+				result = result + tmp;
+				i = exit_percent(format, i + 1);
+				continue ;
+			}
 		}
-		else
-		{
-			ft_putchar(format[i]);
-			result++;
-			i++;
-		}
+		ft_putchar((*format)[i]);
+		result++;
+		i++;
 	}
 	return (result);
 }
