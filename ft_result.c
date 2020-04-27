@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 23:44:38 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/23 00:52:31 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/28 02:26:37 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ t_printf	result_put(t_printf wh)
 	if (wh.flag_minus)
 	{
 		i = wh.sign;
-		if (ft_strcmp(wh.tmp, "0") && (wh.con == 'x' || wh.con == 'X'))
-			i = i + 2;
+		//if (ft_strcmp(wh.tmp, "0") && (wh.con == 'x' || wh.con == 'X'))
+			//i = i + 2;
 		if (wh.con == 'p')
 			i = i + 2;
 		j = 0;

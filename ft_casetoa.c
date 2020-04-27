@@ -6,20 +6,20 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 23:19:24 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/24 17:51:44 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/28 01:57:53 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_printf	dtoa(t_printf wh, long long int d)
+t_printf	dtoa(t_printf wh, int d)
 {
 	int	i;
 
-	if (d - 1 == 9223372036854775807)
+	if (d - 1 == 2147483647)
 	{
-		wh.tmp = ft_strnew(20);
-		wh.tmp = ft_strcpy(wh.tmp, "-9223372036854775808");
+		wh.tmp = ft_strnew(11);
+		wh.tmp = ft_strcpy(wh.tmp, "-2147483648");
 		wh.sign = 0;
 		return (wh);
 	}
@@ -31,7 +31,7 @@ t_printf	dtoa(t_printf wh, long long int d)
 	return (wh);
 }
 
-t_printf	utoa(t_printf wh, unsigned long long int u)
+t_printf	utoa(t_printf wh, unsigned int u)
 {
 	int	i;
 
@@ -49,10 +49,10 @@ t_printf	utoa(t_printf wh, unsigned long long int u)
 	return (wh);
 }
 
-t_printf	xtoa(t_printf wh, unsigned long long x)
+t_printf	xtoa(t_printf wh, unsigned int x)
 {
-	int						i;
-	unsigned long long int	j;
+	int				i;
+	unsigned int	j;
 
 	if (x == 0)
 	{
