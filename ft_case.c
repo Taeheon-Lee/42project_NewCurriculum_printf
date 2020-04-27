@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 22:49:54 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/23 00:53:18 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/27 23:57:03 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_printf	case_s(t_printf wh, char *s)
 	return (wh);
 }
 
-t_printf	case_d(t_printf wh, long long int d)
+t_printf	case_d(t_printf wh, int d)
 {
 	char	*arr;
 
@@ -69,7 +69,7 @@ t_printf	case_d(t_printf wh, long long int d)
 	return (wh);
 }
 
-t_printf	case_u(t_printf wh, unsigned long long int u)
+t_printf	case_u(t_printf wh, unsigned int u)
 {
 	char	*arr;
 
@@ -88,7 +88,7 @@ t_printf	case_u(t_printf wh, unsigned long long int u)
 	return (wh);
 }
 
-t_printf	case_x(t_printf wh, unsigned long long int x)
+t_printf	case_x(t_printf wh, unsigned int x)
 {
 	char *arr;
 

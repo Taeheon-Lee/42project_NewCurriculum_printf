@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 16:36:06 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/26 22:38:01 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/27 23:57:04 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ int	percent_pass(t_printf wh, va_list ap)
 	if (wh.con == 's' || wh.con == 'S')
 		wh = case_s(wh, va_arg(ap, char *));
 	if (wh.con == 'd' || wh.con == 'D' || wh.con == 'i')
-		wh = case_d(wh, va_arg(ap, long long int));
+		wh = case_d(wh, va_arg(ap, int));
 	if (wh.con == 'u' || wh.con == 'U')
-		wh = case_u(wh, va_arg(ap, unsigned long long int));
+		wh = case_u(wh, va_arg(ap, unsigned int));
 	if (wh.con == 'x' || wh.con == 'X' || wh.con == 'p')
-		wh = case_x(wh, va_arg(ap, unsigned long long int));
+		wh = case_x(wh, va_arg(ap, unsigned int));
 	if (wh.con == '%')
 		wh = case_c(wh, '%');
 	wh = result(wh);
