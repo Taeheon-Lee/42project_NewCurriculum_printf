@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 20:41:27 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/28 22:30:51 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/28 23:01:10 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_printf	check(char **format, t_printf wh, va_list ap)
 			wh = set_wid(wh, (*format));
 		else if ((*format)[wh.loc] == '*')
 			wh = set_star(wh, format, va_arg(ap, int));
-		else if ((*format)[wh.loc] == '.')
+		else if ((wh.flag_dot = (*format)[wh.loc] == '.' ? 1 : 0))
 		{
 			if (check_num_pre((*format)[++wh.loc]))
 				wh = set_pre(wh, (*format));

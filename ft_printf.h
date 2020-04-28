@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 16:16:26 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/28 22:30:49 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/28 22:39:56 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct	s_printf
 	int		loc;
 	int		flag_zero;
 	int		flag_minus;
+	int		flag_dot;
 	int		wid;
 	int		pre;
 	int		size_res;
