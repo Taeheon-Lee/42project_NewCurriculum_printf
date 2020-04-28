@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 16:36:06 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/27 23:57:04 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/28 17:13:30 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	percent_start(char **format, int i, va_list ap)
 	t_printf wh;
 
 	ft_memset(&wh, 0, sizeof(wh));
-	wh.loc = i;
+	wh.loc = i - 1;
 	wh.pre = -1;
 	wh = check(format, wh, ap);
 	if (wh.err == 1)

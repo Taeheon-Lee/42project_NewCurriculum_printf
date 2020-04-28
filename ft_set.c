@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 22:48:40 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/25 23:05:26 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/28 17:19:30 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,6 @@ t_printf	set_pre(t_printf wh, char *s)
 	int result;
 
 	result = 0;
-	if (s[wh.loc++] == '*')
-		if (check_star(s[wh.loc + 1]) || check_num(s[wh.loc + 1]))
-		{
-			wh.err = 1;
-			return (wh);
-		}
 	while (s[wh.loc] >= '0' && s[wh.loc] <= '9')
 	{
 		result = result * 10 + (s[wh.loc] - '0');
@@ -34,7 +28,6 @@ t_printf	set_pre(t_printf wh, char *s)
 		return (wh);
 	}
 	wh.pre = result;
-	wh.loc--;
 	return (wh);
 }
 
@@ -43,12 +36,6 @@ t_printf	set_wid(t_printf wh, char *s)
 	int result;
 
 	result = 0;
-	if (s[wh.loc - 1] == '.' || s[wh.loc - 1] == '*')
-	{
-		if (s[wh.loc - 1] == '*')
-			wh.err = 1;
-		return (wh);
-	}
 	while (s[wh.loc] >= '0' && s[wh.loc] <= '9')
 	{
 		result = result * 10 + (s[wh.loc] - '0');

@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 23:19:24 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/28 01:57:53 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/28 17:54:52 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,10 @@ t_printf	xtoa(t_printf wh, unsigned int x)
 
 	if (x == 0)
 	{
-		wh.tmp = ft_strnew(1);
-		wh.tmp[0] = '0';
+		if (wh.pre == -1 || wh.pre == 0)
+			wh.tmp = ft_strnew(0);
+		else
+			wh.tmp = ft_strcpy(ft_strnew(1), "0");
 		return (wh);
 	}
 	i = 0;

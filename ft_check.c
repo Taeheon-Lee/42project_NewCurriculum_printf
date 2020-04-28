@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 20:41:27 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/27 01:39:23 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/28 22:30:51 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,26 @@
 
 t_printf	check(char **format, t_printf wh, va_list ap)
 {
-	while ((*format)[wh.loc])
+	while ((*format)[++wh.loc])
 	{
 		if ((wh.con = set_con((*format)[wh.loc])) != 0)
 			return (wh);
 		else if (check_flag((*format)[wh.loc]))
 			wh = set_flag(wh, (*format)[wh.loc]);
-		else if (check_num((*format)[wh.loc]))
+		else if (check_num_wid((*format)[wh.loc]))
 			wh = set_wid(wh, (*format));
-		else if (check_star((*format)[wh.loc]))
+		else if ((*format)[wh.loc] == '*')
 			wh = set_star(wh, format, va_arg(ap, int));
-		else if (check_dot((*format)[wh.loc]))
+		else if ((*format)[wh.loc] == '.')
 		{
-			wh.loc++;
-			if (check_star((*format)[wh.loc]))
-				wh = set_star(wh, format, va_arg(ap, int));
-			else
+			if (check_num_pre((*format)[++wh.loc]))
 				wh = set_pre(wh, (*format));
+			else if ((*format)[wh.loc] == '*')
+				wh = set_star(wh, format, va_arg(ap, int));
+			wh.loc--;
 		}
 		if (wh.err)
 			break ;
-		wh.loc++;
 	}
 	wh.err = 1;
 	return (wh);
@@ -47,23 +46,16 @@ int			check_flag(char c)
 	return (0);
 }
 
-int			check_num(char c)
+int			check_num_wid(char c)
 {
 	if (c >= '1' && c <= '9')
 		return (1);
 	return (0);
 }
 
-int			check_dot(char c)
+int			check_num_pre(char c)
 {
-	if (c == '.')
-		return (1);
-	return (0);
-}
-
-int			check_star(char c)
-{
-	if (c == '*')
+	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
 }
