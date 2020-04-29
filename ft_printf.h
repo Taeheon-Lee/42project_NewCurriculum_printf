@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 16:16:26 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/28 22:39:56 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/29 11:06:25 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,12 @@ char			*set_star_end(t_printf wh, char **s);
 t_printf		case_c(t_printf wh, int c);
 t_printf		case_s(t_printf wh, char *s);
 t_printf		case_d(t_printf wh, int d);
-t_printf		case_u(t_printf wh, unsigned int u);
-t_printf		case_x(t_printf wh, unsigned int x);
+t_printf		case_ux(t_printf wh, unsigned int u);
+t_printf		case_p(t_printf wh, unsigned long long int p);
 t_printf		dtoa(t_printf wh, int d);
-t_printf		utoa(t_printf wh, unsigned int u);
+t_printf		utoa(t_printf wh, unsigned int ux);
 t_printf		xtoa(t_printf wh, unsigned int x);
+t_printf		ptoa(t_printf wh, unsigned long long int p);
 t_printf		result_put(t_printf wh);
 t_printf		result_set(t_printf wh);
 t_printf		result(t_printf wh);

@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 23:19:24 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/28 23:47:05 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/29 11:06:03 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ t_printf	utoa(t_printf wh, unsigned int u)
 {
 	int	i;
 
+	if (u == 0 && wh.flag_dot && (wh.pre == -1 || wh.pre == 0))
+	{
+		wh.tmp = ft_strnew(0);
+		return (wh);
+	}
 	if (u == 0)
 	{
 		wh.tmp = ft_strnew(1);
@@ -77,6 +82,34 @@ t_printf	xtoa(t_printf wh, unsigned int x)
 		else
 			wh.tmp[i] = j + '0';
 		x /= 16;
+		i--;
+	}
+	return (wh);
+}
+
+t_printf	ptoa(t_printf wh, unsigned long long int p)
+{
+	int				i;
+	unsigned int	j;
+
+	if (p == 0)
+	{
+		wh.tmp = wh.flag_dot && (wh.pre == -1 || wh.pre == 0) ? \
+							ft_strnew(0) : ft_strcpy(ft_strnew(1), "0");
+		return (wh);
+	}
+	i = 0;
+	j = p;
+	while ((j /= 16))
+		i++;
+	wh.tmp = ft_strnew(i + 1);
+	while (p != 0)
+	{
+		if ((j = p % 16) >= 10)
+			wh.tmp[i] = (wh.con == 'X' ? 'A' : 'a') + j - 10;
+		else
+			wh.tmp[i] = j + '0';
+		p /= 16;
 		i--;
 	}
 	return (wh);

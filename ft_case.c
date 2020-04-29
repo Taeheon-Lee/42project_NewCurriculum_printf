@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 22:49:54 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/27 23:57:03 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/29 11:05:45 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,15 @@ t_printf	case_d(t_printf wh, int d)
 	return (wh);
 }
 
-t_printf	case_u(t_printf wh, unsigned int u)
+t_printf	case_ux(t_printf wh, unsigned int ux)
 {
 	char	*arr;
 
-	if (wh.pre == 0 && u == 0)
+	if (wh.pre == 0 && ux == 0)
 		wh.tmp = ft_strnew(0);
 	else
 	{
-		wh = utoa(wh, u);
+		wh = wh.con == 'u' || wh.con == 'U' ? utoa(wh, ux) : xtoa(wh, ux);
 		if (wh.pre != -1 && (int)ft_strlen(wh.tmp) < wh.pre)
 		{
 			arr = ft_strnew(wh.pre - ft_strlen(wh.tmp));
@@ -88,15 +88,15 @@ t_printf	case_u(t_printf wh, unsigned int u)
 	return (wh);
 }
 
-t_printf	case_x(t_printf wh, unsigned int x)
+t_printf	case_p(t_printf wh, unsigned long long int p)
 {
 	char *arr;
 
-	if (wh.pre == 0 && x == 0)
+	if (wh.pre == 0 && p == 0)
 		wh.tmp = ft_strnew(0);
 	else
 	{
-		wh = xtoa(wh, x);
+		wh = ptoa(wh, p);
 		if (wh.pre != -1 && (int)ft_strlen(wh.tmp) < wh.pre)
 		{
 			arr = ft_strnew(wh.pre - ft_strlen(wh.tmp));

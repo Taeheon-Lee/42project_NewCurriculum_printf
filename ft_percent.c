@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 16:36:06 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/28 17:13:30 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/29 12:23:07 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int	percent_print(t_printf wh)
 	}
 	result = ft_strlen(wh.res);
 	ft_putstr(wh.res);
-	free(wh.res);
 	free(wh.tmp);
+	free(wh.res);
 	return (result);
 }
 
@@ -60,15 +60,15 @@ int	percent_pass(t_printf wh, va_list ap)
 {
 	if (wh.con == 'c' || wh.con == 'C')
 		wh = case_c(wh, va_arg(ap, int));
-	if (wh.con == 's' || wh.con == 'S')
+	else if (wh.con == 's' || wh.con == 'S')
 		wh = case_s(wh, va_arg(ap, char *));
-	if (wh.con == 'd' || wh.con == 'D' || wh.con == 'i')
+	else if (wh.con == 'd' || wh.con == 'D' || wh.con == 'i')
 		wh = case_d(wh, va_arg(ap, int));
-	if (wh.con == 'u' || wh.con == 'U')
-		wh = case_u(wh, va_arg(ap, unsigned int));
-	if (wh.con == 'x' || wh.con == 'X' || wh.con == 'p')
-		wh = case_x(wh, va_arg(ap, unsigned int));
-	if (wh.con == '%')
+	else if (wh.con == 'u' || wh.con == 'U' || wh.con == 'x' || wh.con == 'X')
+		wh = case_ux(wh, va_arg(ap, unsigned int));
+	else if (wh.con == 'p')
+		wh = case_p(wh, va_arg(ap, unsigned long long int));
+	else if (wh.con == '%')
 		wh = case_c(wh, '%');
 	wh = result(wh);
 	return (percent_print(wh));
