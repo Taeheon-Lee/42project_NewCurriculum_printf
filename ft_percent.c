@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 16:36:06 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/29 12:23:07 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/29 20:38:12 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int	percent_print(t_printf wh)
 	}
 	result = ft_strlen(wh.res);
 	ft_putstr(wh.res);
-	free(wh.tmp);
 	free(wh.res);
+	free(wh.tmp);
 	return (result);
 }
 
@@ -74,12 +74,12 @@ int	percent_pass(t_printf wh, va_list ap)
 	return (percent_print(wh));
 }
 
-int	percent_start(char **format, int i, va_list ap)
+int	percent_start(char **format, int tmp_loc, va_list ap)
 {
 	t_printf wh;
 
 	ft_memset(&wh, 0, sizeof(wh));
-	wh.loc = i - 1;
+	wh.loc = tmp_loc;
 	wh.pre = -1;
 	wh = check(format, wh, ap);
 	if (wh.err == 1)
@@ -99,15 +99,18 @@ int	percent(char **format, va_list ap)
 	{
 		if ((*format)[i] == '%')
 		{
-			if ((tmp = percent_start(format, i + 1, ap)) != -1)
+			if ((tmp = percent_start(format, i, ap)) != -1)
 			{
 				result = result + tmp;
 				i = exit_percent(format, i + 1);
 				continue ;
 			}
 		}
-		ft_putchar((*format)[i]);
-		result++;
+		else
+		{
+			ft_putchar((*format)[i]);
+			result++;
+		}
 		i++;
 	}
 	return (result);

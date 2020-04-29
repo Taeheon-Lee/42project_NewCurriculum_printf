@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 16:16:26 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/29 11:06:25 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/29 20:21:49 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct	s_printf
 
 int				ft_printf(const char *format, ...);
 int				percent(char **format, va_list ap);
-int				percent_start(char **format, int i, va_list ap);
+int				percent_start(char **format, int tmp_loc, va_list ap);
 int				percent_pass(t_printf wh, va_list ap);
 int				percent_print(t_printf wh);
 int				exit_percent(char **format, int i);

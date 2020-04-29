@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 23:19:24 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/29 11:06:03 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/29 18:57:47 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ t_printf	xtoa(t_printf wh, unsigned int x)
 
 t_printf	ptoa(t_printf wh, unsigned long long int p)
 {
-	int				i;
-	unsigned int	j;
+	int						i;
+	unsigned long long int	j;
 
 	if (p == 0)
 	{
