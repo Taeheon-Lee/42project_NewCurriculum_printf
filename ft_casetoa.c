@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 23:19:24 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/29 18:57:47 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/29 23:36:19 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ t_printf	dtoa(t_printf wh, int d)
 		return (wh);
 	}
 	i = ft_count_digit(d);
-	wh.tmp = ft_strnew(i--);
-	wh.tmp[i--] = d % 10 + '0';
+	wh.tmp = ft_strnew(i);
+	wh.tmp[--i] = d % 10 + '0';
 	while ((d = d / 10))
-		wh.tmp[i--] = d % 10 + '0';
+		wh.tmp[--i] = d % 10 + '0';
 	return (wh);
 }
 
