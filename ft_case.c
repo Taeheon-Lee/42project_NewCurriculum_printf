@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 22:49:54 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/29 22:20:20 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/30 14:05:55 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,18 @@ t_printf	case_s(t_printf wh, char *s)
 	{
 		if (wh.pre == -1)
 			wh.pre = 6;
-		wh.tmp = ft_strnew(wh.pre);
-		wh.tmp = ft_strncpy(wh.tmp, "(null)", wh.pre);
+		wh.tmp = ft_strncpy(ft_strnew(wh.pre), "(null)", wh.pre);
 	}
 	else
 	{
-		length = ft_strlen(s) >= (size_t)wh.pre ? (size_t)wh.pre : ft_strlen(s);
+		if (wh.star_minus)
+			wh.pre = ft_strlen(s);
+		length = ft_strlen(s) >= (size_t)wh.pre ? \
+								(size_t)wh.pre : ft_strlen(s);
 		wh.tmp = ft_strnew(length);
-		i = 0;
-		while (i < length)
-		{
+		i = -1;
+		while (++i < length)
 			wh.tmp[i] = s[i];
-			i++;
-		}
 	}
 	return (wh);
 }

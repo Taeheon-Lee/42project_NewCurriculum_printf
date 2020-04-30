@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 16:16:26 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/29 20:21:49 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/30 14:00:14 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct	s_printf
 	int		size_tmp;
 	int		sign;
 	int		err;
+	int		star_minus;
 	char	con;
 	char	*res;
 	char	*tmp;
@@ -66,6 +67,5 @@ t_printf		result_apply_sign(t_printf wh);
 t_printf		check(char **format, t_printf wh, va_list ap);
 int				check_flag(char c);
 int				check_num_wid(char c);
-int				check_num_pre(char c);
 
 #endif
