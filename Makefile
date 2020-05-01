@@ -6,7 +6,7 @@
 #    By: tlee <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/23 00:34:17 by tlee              #+#    #+#              #
-#    Updated: 2020/04/27 01:04:23 by tlee             ###   ########.fr        #
+#    Updated: 2020/05/01 23:00:47 by tlee             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,11 @@ $(NAME):
 
 clean:
 	@rm -f *.o
+	@rm -f libft/*.o
 
 fclean: clean
 	@rm -f $(NAME)
+	@rm -f libft/*.a
 
 re: fclean all
 

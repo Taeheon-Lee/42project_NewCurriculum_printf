@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 16:16:26 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/30 14:37:22 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/30 16:03:23 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,5 @@ t_printf		result_apply_sign(t_printf wh);
 t_printf		check(char **format, t_printf wh, va_list ap);
 int				check_flag(char c);
 int				check_num_wid(char c);
-int				check_num_pre(char c);
 
 #endif
