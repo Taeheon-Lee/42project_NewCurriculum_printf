@@ -6,36 +6,37 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 20:41:27 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/30 16:03:52 by tlee             ###   ########.fr       */
+/*   Updated: 2020/05/02 23:03:24 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_printf	check(char **format, t_printf wh, va_list ap)
+t_printf	check(const char *format, t_printf wh, va_list ap)
 {
-	while ((*format)[++wh.loc])
+	while (format[++wh.loc])
 	{
-		if ((wh.con = set_con((*format)[wh.loc])) != 0)
-			return (wh);
-		else if (check_flag((*format)[wh.loc]))
-			wh = set_flag(wh, (*format)[wh.loc]);
-		else if (check_num_wid((*format)[wh.loc]))
-			wh = set_wid(wh, (*format));
-		else if ((*format)[wh.loc] == '*')
-			wh = set_star(wh, format, va_arg(ap, int));
-		else if ((wh.flag_dot = (*format)[wh.loc] == '.' ? 1 : 0))
-		{
-			if ((*format)[++wh.loc] != '*')
-				wh = set_pre(wh, (*format));
-			else if ((*format)[wh.loc] == '*')
-				wh = set_star(wh, format, va_arg(ap, int));
-			wh.loc--;
-		}
-		if (wh.err)
+		if ((wh.con = set_con(format[wh.loc])) != 0)
 			break ;
+		else if (check_flag(format[wh.loc]))
+			wh = set_flag(wh, format[wh.loc]);
+		else if (check_num_wid(format[wh.loc]))
+			wh = set_wid(wh, format);
+		else if (format[wh.loc] == '*')
+			wh = set_star(wh, va_arg(ap, int));
+		else if ((wh.flag_dot = format[wh.loc] == '.' ? 1 : 0))
+		{
+			if (format[++wh.loc] != '*' && wh.pre == -1)
+				wh = set_pre(wh, format);
+			else if (format[wh.loc] == '*')
+				wh = set_star(wh, va_arg(ap, int));
+			wh.flag_dot = 0;
+			if (wh.con)
+				break;
+		}
 	}
-	wh.err = 1;
+	if (!wh.con)
+		wh.err = 1;
 	return (wh);
 }
 

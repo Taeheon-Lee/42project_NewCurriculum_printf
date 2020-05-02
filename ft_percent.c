@@ -6,13 +6,13 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 16:36:06 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/29 23:48:36 by tlee             ###   ########.fr       */
+/*   Updated: 2020/05/02 21:46:33 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	exit_percent(char **format, int i)
+int	exit_percent(const char *format, int i)
 {
 	int		cnt;
 	char	c;
@@ -20,7 +20,7 @@ int	exit_percent(char **format, int i)
 	cnt = 0;
 	while (1)
 	{
-		c = (*format)[i + cnt];
+		c = format[i + cnt];
 		if (set_con(c))
 			break ;
 		cnt++;
@@ -74,7 +74,7 @@ int	percent_pass(t_printf wh, va_list ap)
 	return (percent_print(wh));
 }
 
-int	percent_start(char **format, int tmp_loc, va_list ap)
+int	percent_start(const char *format, int tmp_loc, va_list ap)
 {
 	t_printf wh;
 
@@ -87,19 +87,19 @@ int	percent_start(char **format, int tmp_loc, va_list ap)
 	return (percent_pass(wh, ap));
 }
 
-int	percent(char **format, va_list ap)
+int	percent(const char *format, va_list ap)
 {
 	int i;
 	int result;
 	int tmp;
 
-	if (!ft_strcmp(*format, "%"))
+	if (!ft_strcmp(format, "%"))
 		return (-1);
 	i = 0;
 	result = 0;
-	while ((*format)[i])
+	while (format[i])
 	{
-		if ((*format)[i] == '%')
+		if (format[i] == '%')
 		{
 			if ((tmp = percent_start(format, i, ap)) != -1)
 			{
@@ -108,7 +108,7 @@ int	percent(char **format, va_list ap)
 				continue ;
 			}
 		}
-		ft_putchar((*format)[i]);
+		ft_putchar(format[i]);
 		result++;
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 16:16:26 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/30 16:03:23 by tlee             ###   ########.fr       */
+/*   Updated: 2020/05/02 23:06:33 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,16 @@ typedef struct	s_printf
 }				t_printf;
 
 int				ft_printf(const char *format, ...);
-int				percent(char **format, va_list ap);
-int				percent_start(char **format, int tmp_loc, va_list ap);
+int				percent(const char *format, va_list ap);
+int				percent_start(const char *format, int tmp_loc, va_list ap);
 int				percent_pass(t_printf wh, va_list ap);
 int				percent_print(t_printf wh);
-int				exit_percent(char **format, int i);
-t_printf		set_pre(t_printf wh, char *s);
-t_printf		set_wid(t_printf wh, char *s);
+int				exit_percent(const char *format, int i);
+t_printf		set_pre(t_printf wh, const char *s);
+t_printf		set_wid(t_printf wh, const char *s);
 t_printf		set_flag(t_printf wh, char c);
 char			set_con(char c);
-t_printf		set_star(t_printf wh, char **s, int d);
-char			*set_star_front(t_printf wh, char **s);
-char			*set_star_arr(int long long d);
-char			*set_star_end(t_printf wh, char **s);
+t_printf		set_star(t_printf wh, int d);
 t_printf		case_c(t_printf wh, int c);
 t_printf		case_s(t_printf wh, char *s);
 t_printf		case_d(t_printf wh, int d);
@@ -64,7 +61,7 @@ t_printf		result(t_printf wh);
 t_printf		result_apply_p(t_printf wh);
 char			result_put_sign(t_printf wh);
 t_printf		result_apply_sign(t_printf wh);
-t_printf		check(char **format, t_printf wh, va_list ap);
+t_printf		check(const char *format, t_printf wh, va_list ap);
 int				check_flag(char c);
 int				check_num_wid(char c);
 
