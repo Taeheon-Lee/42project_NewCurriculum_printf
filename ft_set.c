@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 22:48:40 by tlee              #+#    #+#             */
-/*   Updated: 2020/05/02 23:21:30 by tlee             ###   ########.fr       */
+/*   Updated: 2020/05/03 01:40:16 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ t_printf	set_star(t_printf wh, int d)
 	if (wh.flag_dot && wh.pre == -1)
 	{
 		if (d < 0)
+		{
+			wh.star_minus = 1;
 			d = 0;
+		}
 		wh.pre = d;
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 16:36:06 by tlee              #+#    #+#             */
-/*   Updated: 2020/05/02 21:46:33 by tlee             ###   ########.fr       */
+/*   Updated: 2020/05/03 00:53:18 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	percent(const char *format, va_list ap)
 	int tmp;
 
 	if (!ft_strcmp(format, "%"))
-		return (-1);
+		return (0);
 	i = 0;
 	result = 0;
 	while (format[i])
