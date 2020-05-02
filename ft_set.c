@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 22:48:40 by tlee              #+#    #+#             */
-/*   Updated: 2020/05/03 01:40:16 by tlee             ###   ########.fr       */
+/*   Updated: 2020/05/03 02:52:04 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@ t_printf	set_pre(t_printf wh, const char *s)
 {
 	int result;
 
-	result = 0;
 	if (s[wh.loc] >= '0' && s[wh.loc] <= '9')
 	{
+		result = 0;
 		while (s[wh.loc] >= '0' && s[wh.loc] <= '9')
 		{
 			result = result * 10 + (s[wh.loc] - '0');
 			wh.loc++;
 		}
 		wh.loc--;
+		wh.pre = result;
 	}
 	else
 		wh.con = set_con(s[wh.loc]);
 	if (s[wh.loc] == '-')
 		wh.loc--;
-	wh.pre = result;
 	return (wh);
 }
 

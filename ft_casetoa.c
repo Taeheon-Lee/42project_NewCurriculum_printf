@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 23:19:24 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/30 14:04:40 by tlee             ###   ########.fr       */
+/*   Updated: 2020/05/03 03:26:14 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_printf	dtoa(t_printf wh, int d)
 {
 	int	i;
 
-	if (d == 0 && wh.flag_dot && (wh.pre == -1 || wh.pre == 0))
+	if (d == 0 && (wh.pre == -1 || wh.pre == 0))
 	{
 		wh.tmp = ft_strnew(0);
 		return (wh);
@@ -40,7 +40,7 @@ t_printf	utoa(t_printf wh, unsigned int u)
 {
 	int	i;
 
-	if (u == 0 && wh.flag_dot && (wh.pre == -1 || wh.pre == 0))
+	if (u == 0 && (wh.pre == -1 || wh.pre == 0))
 	{
 		wh.tmp = ft_strnew(0);
 		return (wh);
@@ -66,7 +66,7 @@ t_printf	xtoa(t_printf wh, unsigned int x)
 
 	if (x == 0)
 	{
-		wh.tmp = wh.flag_dot && (wh.pre == -1 || wh.pre == 0) ? \
+		wh.tmp = (wh.pre == -1 || wh.pre == 0) ? \
 							ft_strnew(0) : ft_strcpy(ft_strnew(1), "0");
 		return (wh);
 	}
@@ -94,7 +94,7 @@ t_printf	ptoa(t_printf wh, unsigned long long int p)
 
 	if (p == 0)
 	{
-		wh.tmp = wh.flag_dot && (wh.pre == -1 || wh.pre == 0) ? \
+		wh.tmp = (wh.pre == -1 || wh.pre == 0) ? \
 							ft_strnew(0) : ft_strcpy(ft_strnew(1), "0");
 		return (wh);
 	}

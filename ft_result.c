@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 23:44:38 by tlee              #+#    #+#             */
-/*   Updated: 2020/05/03 02:39:42 by tlee             ###   ########.fr       */
+/*   Updated: 2020/05/03 02:49:39 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_printf	result_set(t_printf wh)
 	if (len < wh.wid)
 		len = wh.wid;
 	wh.res = ft_strnew(len);
-	if (wh.flag_zero && !wh.flag_minus && wh.star_minus && wh.con != 's')
+	if (wh.flag_zero && !wh.flag_minus && wh.pre == -1)
 		wh.res = ft_memset(wh.res, '0', len);
 	else
 		wh.res = ft_memset(wh.res, ' ', len);
