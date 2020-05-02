@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 16:16:26 by tlee              #+#    #+#             */
-/*   Updated: 2020/05/02 23:06:33 by tlee             ###   ########.fr       */
+/*   Updated: 2020/05/03 03:59:13 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_printf		set_pre(t_printf wh, const char *s);
 t_printf		set_wid(t_printf wh, const char *s);
 t_printf		set_flag(t_printf wh, char c);
 char			set_con(char c);
-t_printf		set_star(t_printf wh, int d);
+t_printf		set_star(t_printf wh, const char *format, int d);
 t_printf		case_c(t_printf wh, int c);
 t_printf		case_s(t_printf wh, char *s);
 t_printf		case_d(t_printf wh, int d);

@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 22:48:40 by tlee              #+#    #+#             */
-/*   Updated: 2020/05/03 02:52:04 by tlee             ###   ########.fr       */
+/*   Updated: 2020/05/03 04:00:57 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ t_printf	set_wid(t_printf wh, const char *s)
 	return (wh);
 }
 
-t_printf	set_star(t_printf wh, int d)
+t_printf	set_star(t_printf wh, const char *format, int d)
 {
-	if (wh.flag_dot && wh.pre == -1)
+	if (format[wh.loc - 1] == '.')
 	{
 		if (d < 0)
 		{
