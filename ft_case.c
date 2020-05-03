@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 22:49:54 by tlee              #+#    #+#             */
-/*   Updated: 2020/05/03 03:16:47 by tlee             ###   ########.fr       */
+/*   Updated: 2020/05/03 20:44:18 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ t_printf	case_ux(t_printf wh, unsigned int ux)
 		wh.tmp = ft_strnew(0);
 	else
 	{
-		wh = wh.con == 'u' || wh.con == 'U' ? utoa(wh, ux) : xtoa(wh, ux);
+		wh = wh.con == 'u' ? utoa(wh, ux) : xtoa(wh, ux);
 		if (wh.pre != -1 && (int)ft_strlen(wh.tmp) < wh.pre)
 		{
 			arr = ft_strnew(wh.pre - ft_strlen(wh.tmp));

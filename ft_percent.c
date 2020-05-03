@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 16:36:06 by tlee              #+#    #+#             */
-/*   Updated: 2020/05/03 00:53:18 by tlee             ###   ########.fr       */
+/*   Updated: 2020/05/03 20:43:46 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ int	percent_print(t_printf wh)
 
 int	percent_pass(t_printf wh, va_list ap)
 {
-	if (wh.con == 'c' || wh.con == 'C')
+	if (wh.con == 'c')
 		wh = case_c(wh, va_arg(ap, int));
-	else if (wh.con == 's' || wh.con == 'S')
+	else if (wh.con == 's')
 		wh = case_s(wh, va_arg(ap, char *));
-	else if (wh.con == 'd' || wh.con == 'D' || wh.con == 'i')
+	else if (wh.con == 'd' || wh.con == 'i')
 		wh = case_d(wh, va_arg(ap, int));
-	else if (wh.con == 'u' || wh.con == 'U' || wh.con == 'x' || wh.con == 'X')
+	else if (wh.con == 'u' || wh.con == 'x' || wh.con == 'X')
 		wh = case_ux(wh, va_arg(ap, unsigned int));
 	else if (wh.con == 'p')
 		wh = case_p(wh, va_arg(ap, unsigned long long int));
@@ -93,24 +93,24 @@ int	percent(const char *format, va_list ap)
 	int result;
 	int tmp;
 
-	if (!ft_strcmp(format, "%"))
-		return (0);
 	i = 0;
 	result = 0;
 	while (format[i])
 	{
 		if (format[i] == '%')
 		{
-			if ((tmp = percent_start(format, i, ap)) != -1)
-			{
-				result = result + tmp;
-				i = exit_percent(format, i + 1);
-				continue ;
-			}
+			tmp = percent_start(format, i, ap);
+			if (tmp == -1)
+				break ;
+			result = result + tmp;
+			i = exit_percent(format, i + 1);
 		}
-		ft_putchar(format[i]);
-		result++;
-		i++;
+		else
+		{
+			ft_putchar(format[i]);
+			result++;
+			i++;
+		}
 	}
 	return (result);
 }
