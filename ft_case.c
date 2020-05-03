@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 22:49:54 by tlee              #+#    #+#             */
-/*   Updated: 2020/05/03 17:34:23 by tlee             ###   ########.fr       */
+/*   Updated: 2020/05/03 03:16:47 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ t_printf	case_s(t_printf wh, char *s)
 	{
 		if (wh.star_minus)
 			wh.pre = ft_strlen(s);
+		if (wh.flag_dot && wh.pre == -1)
+			wh.pre = 0;
 		length = ft_strlen(s) >= (size_t)wh.pre ? \
 								(size_t)wh.pre : ft_strlen(s);
 		wh.tmp = ft_strnew(length);
