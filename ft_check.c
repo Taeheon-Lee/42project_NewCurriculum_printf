@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 20:41:27 by tlee              #+#    #+#             */
-/*   Updated: 2020/05/03 17:23:25 by tlee             ###   ########.fr       */
+/*   Updated: 2020/05/03 17:50:12 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,17 @@ t_printf	check(const char *format, t_printf wh, va_list ap)
 {
 	while (format[++wh.loc])
 	{
-		if ((wh.con = set_con(format[wh.loc])) != 0)
-			break ;
-		else if (check_flag(format[wh.loc]))
-			wh = set_flag(wh, format[wh.loc]);
-		else if (format[wh.loc - 1] == '.')
+		if (format[wh.loc - 1] == '.')
 		{
 			if (format[wh.loc] != '*')
 				wh = set_pre(wh, format);
-			else if (format[wh.loc] == '*')
-				wh = set_star(wh, format, va_arg(ap, int));
 			if (wh.con)
 				break;
 		}
+		else if ((wh.con = set_con(format[wh.loc])) != 0)
+			break ;
+		else if (check_flag(format[wh.loc]))
+			wh = set_flag(wh, format[wh.loc]);
 		else if (check_num_wid(format[wh.loc]))
 			wh = set_wid(wh, format);
 		else if (format[wh.loc] == '*')
