@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 22:49:54 by tlee              #+#    #+#             */
-/*   Updated: 2020/05/14 19:11:04 by tlee             ###   ########.fr       */
+/*   Updated: 2020/05/14 19:20:03 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_printf	case_s(t_printf wh, char *s)
 
 	if (s == NULL)
 	{
-		if (wh.pre == -1)
+		if (wh.pre == -1 && wh.flag_dot)
 			wh.pre = 0;
 		wh.tmp = ft_strncpy(ft_strnew(wh.pre), "(null)", wh.pre);
 	}
